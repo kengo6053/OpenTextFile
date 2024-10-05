@@ -5,7 +5,7 @@ bl_info = {
     "author": "tsutomu",
     "version": (0, 1),
     "blender": (4, 2, 0),
-    # "support": "TESTING",
+    "support": "TESTING",
     "category": "Object",
     "description": "",
     "location": "View3D > Object",
