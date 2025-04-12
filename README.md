@@ -5,7 +5,7 @@ And, open the URL of a text object.
 
 ## Installation
 
-- Download https://github.com/SaitoTsutomu/OpenTextFile/archive/refs/heads/master.zip
+- Download https://github.com/KengoHoi/OpenTextFile/archive/refs/heads/master.zip
 - Start Blender.
 - Edit menu -> Preferences
   - Select the "Add-ons" tab.
