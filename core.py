@@ -5,9 +5,9 @@ import bpy
 from .register_class import _get_cls
 
 
-class COU_OT_open_url(bpy.types.Operator):
-    bl_idname = "object.open_url"
-    bl_label = "Open URL"
+class COU_OT_open_text_file(bpy.types.Operator):
+    bl_idname = "object.open_text_file"
+    bl_label = "Open Text File"
     bl_description = "Open the URL of a text object."
 
     def execute(self, context):  # noqa: PLR6301
@@ -17,24 +17,6 @@ class COU_OT_open_url(bpy.types.Operator):
         lst = [obj for obj in lst if obj.type == "FONT" and obj.data.body.startswith("http")]
         if lst:
             webbrowser.open(lst[0].data.body)
-        return {"FINISHED"}
-
-
-class COU_OT_add_url(bpy.types.Operator):
-    bl_idname = "object.add_url"
-    bl_label = "Add URL"
-    bl_description = "Add the a text object of URL."
-
-    def execute(self, _context):
-        s = bpy.context.window_manager.clipboard
-        if not (isinstance(s, str) and s.startswith("http")):
-            self.report({"WARNING"}, "Copy URL")
-            return {"CANCELLED"}
-        bpy.ops.object.text_add(radius=0.1)
-        text = bpy.context.object
-        text.data.body = s
-        text.name = "URL"
-        text.hide_render = True
         return {"FINISHED"}
 
 
@@ -50,9 +32,9 @@ def draw_item(self, _context):
 
 def register():
     """追加登録用(クラス登録は、register_class内で実行)"""
-    bpy.types.VIEW3D_MT_object.append(draw_item)
+    bpy.types.TEXT_MT_text.append(draw_item)
 
 
 def unregister():
     """追加削除用(クラス削除は、register_class内で実行)"""
-    bpy.types.VIEW3D_MT_object.remove(draw_item)
+    bpy.types.TEXT_MT_text.remove(draw_item)
